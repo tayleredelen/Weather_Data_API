@@ -1,7 +1,11 @@
+import pandas
 from flask import Flask, render_template
+import pandas as pd
 
 # website object instance
 app = Flask(__name__)
+
+df = pandas.read.csv("/data_small")
 
 
 # flask is configured to look for "templates" folder in root path
@@ -17,7 +21,7 @@ def home():
 
 @app.route("/api/v1/<station>/<date>/")
 def about(station, date):
-    # df = pandas.read.csv("")
+    df = pd.read_csv("data_small/TG_STAID000001.txt")
     temperature = 23
     return {"station": station,
             "date": date,
