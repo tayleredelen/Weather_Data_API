@@ -10,10 +10,13 @@ app = Flask(__name__)
 # alternatively could delete the param in @app.route to show the tutorial.html file
 # the @ symbol on app is a decorator, connecting decorator (url path) to the function
 
+stations = pd.read_csv("data_small/stations.txt", skiprows=17)
+stations = stations[["STAID", "STANAME                                 "]]
+
 
 @app.route("/")
 def home():
-    return render_template("home.html")
+    return render_template("home.html", data=stations.to_html())
 
 
 @app.route("/api/v1/<station>/<date>")
@@ -30,4 +33,3 @@ def about(station, date):
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
 #     default port is 5000, giving this argument allows multiple apps to run at once
-
