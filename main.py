@@ -50,4 +50,3 @@ def yearly(station, year):
 if __name__ == "__main__":
     app.run(debug=True, port=5001)
 #     default port is 5000, giving this argument allows multiple apps to run at once
-
